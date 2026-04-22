@@ -1,0 +1,41 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "if": "Bash(uv pip install *)",
+            "command": "~/.claude/hooks/aminnaggar_uv_antipattern/block-uv-pip-install.sh",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "if": "Bash(uv pip uninstall *)",
+            "command": "~/.claude/hooks/aminnaggar_uv_antipattern/block-uv-pip-uninstall.sh",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "if": "Bash(uv pip freeze *|uv pip freeze)",
+            "command": "~/.claude/hooks/aminnaggar_uv_antipattern/block-uv-pip-freeze.sh",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "if": "Bash(uv venv *|uv venv)",
+            "command": "~/.claude/hooks/aminnaggar_uv_antipattern/block-uv-venv.sh",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "if": "Bash(pip install *|pip3 install *)",
+            "command": "~/.claude/hooks/aminnaggar_uv_antipattern/block-pip-install.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
